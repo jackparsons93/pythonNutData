@@ -39,9 +39,9 @@ for key in arrOfArr:
 
     #print key[2]
     if key[0] in myDict:
-        myDict[key[0]]=myDict[key[0]]+([key[1] , key[2]])
+        myDict[key[0]]=myDict[key[0]]+[[key[1] , key[2]]]
     else:
-        myDict[key[0]]=[key[1], key[2]]
+        myDict[key[0]]=[[key[1], key[2]]]
 
 
     #if i[0] in myDict:
@@ -52,7 +52,55 @@ for key in arrOfArr:
 
 
 od = collections.OrderedDict(sorted(myDict.items()))
-print od
+#print od
+aminoDict=collections.OrderedDict()
+count=0
+for value in od:
+    #print(value) # + str(od[value]))
+    count=0
+    aminoTotal=0.0
+    for amino in od[value]:
+        #print(str(od[value][count][1]))
+        #print('****************')
+        aminoTotal=float(od[value][count][1])+aminoTotal
+        count += 1
+        
+    print aminoTotal
+    aminoDict[value]=aminoTotal
+
+    #print(count)
+#print str(od['~05306~'])
+#print(aminoDict)
+
+
+for value in od:
+    print(value) # + str(od[value]))
+    count=0
+    
+    for amino in od[value]:
+        aminoPercentage=0
+        #print(str(od[value][count][1]))
+        #print('****************')
+        #aminoTotal=float(od[value][count][1])+aminoTotal
+        try:
+            aminoPercentage= (float(od[value][count][1]))/aminoDict[value]
+            print(aminoPercentage)
+            count += 1
+        except ZeroDivisionError:
+            print("Divided by zero??")
+            print(value+str(od[value]))
+            count += 1
+        
+    #print aminoTotal
+    #aminoDict[value]=aminoTotal
+
+
+
+
+#def dictBuilder(odInput):
+
+
+
 
 #for i in xrange(100):
 #    key = i % 10
