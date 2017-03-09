@@ -1,6 +1,44 @@
 import csv
 import collections
 #import numpy as np
+wheyDictPercent=collections.OrderedDict()
+#typtophan
+wheyDictPercent["~501~"]=1.4
+#Threonine
+wheyDictPercent["~502~"]=6.7
+#Isoleucine
+wheyDictPercent["~503~"]=6.4
+#Leucine
+wheyDictPercent["~504~"]=10.6
+#Lysine
+wheyDictPercent["~505~"]=9.6
+#Methione
+wheyDictPercent["~506~"]=2.2
+#cystine
+wheyDictPercent["~507~"]=2.2
+#Phenylalanine
+wheyDictPercent["~508~"]=3.0
+#Tyrosine
+wheyDictPercent["~509~"]=2.6
+#Valine
+wheyDictPercent["~510~"]=5.9
+#arginine
+wheyDictPercent["~511~"]=2.1
+#Histidine
+wheyDictPercent["~512~"]=1.7
+#Alanine
+wheyDictPercent["~513~"]=5.0
+#Aspartic Acid
+wheyDictPercent["~514~"]=11.0
+#Glutamic Acid
+wheyDictPercent["~515~"]=18.1
+#Glycine
+wheyDictPercent["~516~"]=1.4
+#proline
+wheyDictPercent["~517~"]=5.5
+#serine
+wheyDictPercent["~518~"]=4.6
+
 proteinNums=[]
 for i in range(1,19):
     if len(str(i))==1:
@@ -73,6 +111,16 @@ for value in od:
 #print(aminoDict)
 
 
+
+        
+    #print aminoTotal
+    #aminoDict[value]=aminoTotal
+
+
+
+
+
+
 for value in od:
     print(value) # + str(od[value]))
     count=0
@@ -84,55 +132,41 @@ for value in od:
         #aminoTotal=float(od[value][count][1])+aminoTotal
         try:
             aminoPercentage= (float(od[value][count][1]))/aminoDict[value]*100
-            print(aminoPercentage)
+            print(od[value][count][0]+str((aminoPercentage)-(wheyDictPercent[od[value][count][0]])))
             count += 1
         except ZeroDivisionError:
             print("Divided by zero??")
             print(value+str(od[value]))
             count += 1
-        
-    #print aminoTotal
-    #aminoDict[value]=aminoTotal
-wheyDictPercent=collections.OrderedDict()
-#typtophan
-wheyDictPercent["~501~"]=1.4
-#Threonine
-wheyDictPercent["~502~"]=6.7
-#Isoleucine
-wheyDictPercent["~503~"]=6.4
-#Leucine
-wheyDictPercent["~504~"]=10.6
-#Lysine
-wheyDictPercent["~505~"]=9.6
-#Methione
-wheyDictPercent["~506~"]=2.2
-#cystine
-wheyDictPercent["~507~"]=2.2
-#Phenylalanine
-wheyDictPercent["~508~"]=3.0
-#Tyrosine
-wheyDictPercent["~509~"]=2.6
-#Valine
-wheyDictPercent["~510~"]=5.9
-#arginine
-wheyDictPercent["~511~"]=2.1
-#Histidine
-wheyDictPercent["~512~"]=1.7
-#Alanine
-wheyDictPercent["~513~"]=5.0
-#Aspartic Acid
-wheyDictPercent["~514~"]=11.0
-#Glutamic Acid
-wheyDictPercent["~515~"]=18.1
-#Glycine
-wheyDictPercent["~516~"]=1.4
-#proline
-wheyDictPercent["~517~"]=5.5
-#serine
-wheyDictPercent["~518~"]=4.6
+
+
 
 
 print(sum(wheyDictPercent.values()))
+
+
+#for value in od:
+#    print(value) # + str(od[value]))
+#    count=0
+#
+#    for amino in od[value]:
+#        #aminoPercentage=0
+#        #print(str(od[value][count][1]))
+#        #print('****************')
+#        #aminoTotal=float(od[value][count][1])+aminoTotal
+#        print(wheyDictPercent[od[value][count][0]]-float(od[value][count][1]))
+#        #try:
+#            #aminoPercentage= (float(od[value][count][1]))/aminoDict[value]*100
+#            #print(aminoPercentage)
+#        count += 1
+#        #except ZeroDivisionError:
+#            #print("Divided by zero??")
+#            #print(value+str(od[value]))
+#            #count += 1
+
+
+
+
 
 #print(1.11153945001+4.04137753791+4.44615780005+7.87715240298+8.08275507582+3.1290156772+1.31071703932+3.83577486507+3.23181701362+4.14417887433+7.07401696222+2.01747622719+5.85967617579+10.100231303+15.3559496273+11.3145720894+3.1290156772+3.93857620149)
 
